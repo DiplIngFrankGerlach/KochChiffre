@@ -1,3 +1,4 @@
+(C) Frank Gerlach 2024 
 
 =========================================
 Sichere Befehlszeile - Chiffrierprotokoll
@@ -41,3 +42,11 @@ KlartextUndPruefSumme = Klartext | FF_HASH(Klartext)
 3.) Fernmeldebetrieb von B nach A
 ==================================
 Analog zu 2.
+
+
+
+LIZENZ
+======
+Die nichtkommerzielle Nutzung des Protokolls ist kostenfrei.
+Eine kommerzielle Nutzung erfordert einen schriftlichen Vertrag
+mit dem Autor Frank Gerlach.
