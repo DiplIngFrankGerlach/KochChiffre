@@ -1,0 +1,43 @@
+
+=========================================
+Sichere Befehlszeile - Chiffrierprotokoll
+=========================================
+
+Version 1.0
+
+Gegeben sind die Fernmeldepartner A und B
+
+
+1.) Austausch von Sitzungsschluesseln
+=====================================
+
+A erzeugt
+
+SS_A = FF_ECB(Sitzungsschluessel_A,GemeinsamerSchluessel)
+
+Sitzungsschluessel_A sind 32 Oktets und werden aus starkem Zufall bestimmt.
+
+SS_B = FF_ECB(Sitzungsschluessel_B,GemeinsamerSchluessel)
+
+Sitzungsschluessel_B sind 32 Oktets und werden aus starkem Zufall bestimmt.
+
+GemeinsamerSchluessel ist ein Geheimnis, welches zuvor per Bote, per GNUpg
+oder mittels KVZ ausgetauscht wurde. Er sollte eine Entropie von 32 Oktets
+besitzen.
+
+Mit FF_ECB(Schluessel,Klartext) = Franks Feistel 2 im Electronic Code Book Modus.
+
+
+2.) Fernmeldebetrieb A nach B
+=============================
+
+SichereNachricht[i] = KlartextUndPruefSumme XOR FF_ECB(Sitzungsschluessel_A, Zaehler)
+
+Dabei wird Zaehler für alle 16 Oktets um eins hochgezaehlt.
+
+KlartextUndPruefSumme = Klartext | FF_HASH(Klartext)
+
+
+3.) Fernmeldebetrieb von B nach A
+==================================
+Analog zu 2.
